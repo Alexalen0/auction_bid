@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter Offer Received</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #FF9800;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+        .content {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 0 0 8px 8px;
+        }
+        .offer-details {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #FF9800;
+        }
+        .amounts {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+        .amount-box {
+            background-color: #fff3e0;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            width: 45%;
+        }
+        .counter-offer {
+            font-size: 24px;
+            color: #FF9800;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .action-needed {
+            background-color: #fff3e0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 2px solid #FF9800;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🤝 Counter Offer Received</h1>
+    </div>
+    
+    <div class="content">
+        <h2>Hello {{buyerName}},</h2>
+        
+        <p>The seller has made a counter offer for your winning bid! They would like to negotiate the final price.</p>
+        
+        <div class="offer-details">
+            <h3>Auction Details:</h3>
+            <p><strong>Item:</strong> {{auctionTitle}}</p>
+            <p><strong>Auction ID:</strong> #{{auctionId}}</p>
+            <p><strong>Seller:</strong> {{sellerName}}</p>
+        </div>
+        
+        <div class="amounts">
+            <div class="amount-box">
+                <h4>Your Original Bid</h4>
+                <p style="font-size: 18px; color: #666;">${{originalBid}}</p>
+            </div>
+            <div class="amount-box">
+                <h4>Counter Offer</h4>
+                <p style="font-size: 18px; color: #FF9800; font-weight: bold;">${{counterOfferAmount}}</p>
+            </div>
+        </div>
+        
+        <div class="action-needed">
+            <h3>⏰ Action Required</h3>
+            <p>Please log in to your account to respond to this counter offer. You can either:</p>
+            <ul>
+                <li><strong>Accept</strong> the counter offer and proceed with the transaction</li>
+                <li><strong>Reject</strong> the counter offer and decline the purchase</li>
+            </ul>
+            <p><strong>Note:</strong> The seller is waiting for your response!</p>
+        </div>
+        
+        <p>This is a great opportunity to negotiate and potentially secure the item you wanted. Please consider the seller's counter offer carefully.</p>
+        
+        <p>Best regards,<br>
+        The AuctionBid Team</p>
+    </div>
+    
+    <div class="footer">
+        <p>This is an automated message from AuctionBid Platform</p>
+        <p>Log in to your account to respond to this counter offer</p>
+    </div>
+</body>
+</html>

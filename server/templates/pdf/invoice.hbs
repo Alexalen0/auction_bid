@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice {{invoiceNumber}}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            line-height: 1.4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 20px;
+        }
+        
+        .company-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4CAF50;
+            margin-bottom: 5px;
+        }
+        
+        .invoice-title {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .invoice-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .invoice-info, .company-info {
+            width: 48%;
+        }
+        
+        .invoice-info h3, .company-info h3 {
+            color: #4CAF50;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .parties {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .buyer-info, .seller-info {
+            width: 48%;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .buyer-info h3, .seller-info h3 {
+            color: #4CAF50;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        
+        .auction-details {
+            background-color: #f0f8f0;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .auction-details h3 {
+            color: #4CAF50;
+            margin-top: 0;
+        }
+        
+        .transaction-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        
+        .transaction-table th {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        .transaction-table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .transaction-table .amount {
+            text-align: right;
+            font-weight: bold;
+        }
+        
+        .total-row {
+            background-color: #f0f8f0;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .total-row td {
+            padding: 15px 10px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 10px;
+        }
+        
+        .terms {
+            margin-top: 30px;
+            font-size: 10px;
+            color: #666;
+        }
+        
+        .terms h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="company-name">{{company.name}}</div>
+        <div class="invoice-title">INVOICE</div>
+        <div>{{company.address}}</div>
+        <div>{{company.email}} | {{company.phone}}</div>
+    </div>
+    
+    <div class="invoice-details">
+        <div class="invoice-info">
+            <h3>Invoice Details</h3>
+            <p><strong>Invoice Number:</strong> {{invoiceNumber}}</p>
+            <p><strong>Invoice Date:</strong> {{invoiceDate}}</p>
+            <p><strong>Auction ID:</strong> #{{auction.id}}</p>
+        </div>
+        <div class="company-info">
+            <h3>Payment Terms</h3>
+            <p><strong>Due Date:</strong> Upon Receipt</p>
+            <p><strong>Payment Method:</strong> As Agreed</p>
+            <p><strong>Currency:</strong> USD</p>
+        </div>
+    </div>
+    
+    <div class="parties">
+        <div class="buyer-info">
+            <h3>Bill To (Buyer)</h3>
+            <p><strong>{{buyer.name}}</strong></p>
+            <p>{{buyer.email}}</p>
+            <p>User ID: {{buyer.id}}</p>
+        </div>
+        <div class="seller-info">
+            <h3>Sold By (Seller)</h3>
+            <p><strong>{{seller.name}}</strong></p>
+            <p>{{seller.email}}</p>
+            <p>User ID: {{seller.id}}</p>
+        </div>
+    </div>
+    
+    <div class="auction-details">
+        <h3>Auction Item Details</h3>
+        <p><strong>Title:</strong> {{auction.title}}</p>
+        <p><strong>Description:</strong> {{auction.description}}</p>
+        <p><strong>Starting Price:</strong> ${{auction.startingPrice}}</p>
+        <p><strong>Final Winning Bid:</strong> ${{auction.finalAmount}}</p>
+    </div>
+    
+    <table class="transaction-table">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{auction.title}} - Auction Item</td>
+                <td>1</td>
+                <td class="amount">${{transaction.subtotal}}</td>
+                <td class="amount">${{transaction.subtotal}}</td>
+            </tr>
+            <tr>
+                <td>Platform Service Fee (5%)</td>
+                <td>1</td>
+                <td class="amount">${{transaction.platformFee}}</td>
+                <td class="amount">${{transaction.platformFee}}</td>
+            </tr>
+            <tr class="total-row">
+                <td colspan="3"><strong>TOTAL AMOUNT DUE</strong></td>
+                <td class="amount"><strong>${{transaction.total}}</strong></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <div class="terms">
+        <h4>Terms and Conditions:</h4>
+        <ul>
+            <li>This invoice represents the final transaction amount for the auction item.</li>
+            <li>Payment arrangements should be made directly between buyer and seller.</li>
+            <li>The platform service fee is automatically calculated and included.</li>
+            <li>Delivery and pickup arrangements are the responsibility of both parties.</li>
+            <li>All sales are final once the transaction is confirmed.</li>
+            <li>For disputes or issues, please contact our support team within 48 hours.</li>
+        </ul>
+    </div>
+    
+    <div class="footer">
+        <p>Thank you for using {{company.name}}!</p>
+        <p>This invoice was generated automatically on {{invoiceDate}}</p>
+        <p>For support, contact us at {{company.email}}</p>
+    </div>
+</body>
+</html>
