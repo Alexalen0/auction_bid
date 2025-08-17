@@ -142,7 +142,7 @@ const Register = () => {
                   value={formData.firstName}
                   onChange={handleChange}
                   className={`input-field ${errors.firstName ? 'border-red-500 focus:ring-red-500' : ''}`}
-                  placeholder="John"
+                  placeholder="First name"
                 />
                 {errors.firstName && (
                   <p className="mt-1 text-sm text-red-600">{errors.firstName}</p>
@@ -160,7 +160,7 @@ const Register = () => {
                   value={formData.lastName}
                   onChange={handleChange}
                   className={`input-field ${errors.lastName ? 'border-red-500 focus:ring-red-500' : ''}`}
-                  placeholder="Doe"
+                  placeholder="Last name"
                 />
                 {errors.lastName && (
                   <p className="mt-1 text-sm text-red-600">{errors.lastName}</p>
@@ -184,7 +184,7 @@ const Register = () => {
                   value={formData.username}
                   onChange={handleChange}
                   className={`input-field pl-10 ${errors.username ? 'border-red-500 focus:ring-red-500' : ''}`}
-                  placeholder="johndoe"
+                  placeholder="Username"
                 />
               </div>
               {errors.username && (
@@ -209,7 +209,7 @@ const Register = () => {
                   value={formData.email}
                   onChange={handleChange}
                   className={`input-field pl-10 ${errors.email ? 'border-red-500 focus:ring-red-500' : ''}`}
-                  placeholder="john@example.com"
+                  placeholder="Email"
                 />
               </div>
               {errors.email && (
@@ -229,8 +229,8 @@ const Register = () => {
                 onChange={handleChange}
                 className="input-field"
               >
-                <option value="buyer">Buyer - Bid on auctions</option>
-                <option value="seller">Seller - Create and manage auctions</option>
+                <option value="buyer">Buyer</option>
+                <option value="seller">Seller</option>
               </select>
             </div>
 
@@ -251,7 +251,7 @@ const Register = () => {
                   value={formData.password}
                   onChange={handleChange}
                   className={`input-field pl-10 pr-10 ${errors.password ? 'border-red-500 focus:ring-red-500' : ''}`}
-                  placeholder="Enter your password"
+                  placeholder="Password"
                 />
                 <button
                   type="button"
@@ -287,7 +287,7 @@ const Register = () => {
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   className={`input-field pl-10 pr-10 ${errors.confirmPassword ? 'border-red-500 focus:ring-red-500' : ''}`}
-                  placeholder="Confirm your password"
+                  placeholder="Confirm password"
                 />
                 <button
                   type="button"
